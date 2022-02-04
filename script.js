@@ -26,6 +26,8 @@ const addTransactions= transaction => {
     const CssClass = transaction.amount < 0 ? 'minus' : 'plus'
     const ValueABS = Math.abs(transaction.amount)
     const li = document.createElement('li')
+
+    console.log(ValueABS)
     
     li.classList.add(CssClass)
     li.innerHTML = ` ${transaction.name} 
@@ -34,11 +36,11 @@ const addTransactions= transaction => {
 
    transactionsUl.append(li) 
 }
-/*Pegar apenas os valores da propriendade Amount de dentr do array, atravez do metodo map()  */
+/*Pegar apenas os valores da propriendade Amount de dentro do array, atravez do metodo map()  */
 const updateBalance =()=>{
     const transactionsAmout = transactions.map(transaction => transaction.amount)
     const total = transactionsAmout.reduce((accumulator, transaction) => accumulator + transaction, 0).toFixed(2)
-    const FilterNegative = Math.abs(transactionsAmout.filter(item => item < 0).reduce((accumulator, value)=> accumulator + value, 0).toFixed(2)) 
+    const FilterNegative = Math.abs(transactionsAmout.filter(item => item < 0).reduce((accumulator, value)=> accumulator + value, 0)).toFixed(2)
     const FilterPositive = transactionsAmout.filter(item => item > 0).reduce((accumulator, value)=> accumulator + value, 0).toFixed(2)
 
     /* Passando os valores para os respectivos locais no HTML atravez das consts criadas */
